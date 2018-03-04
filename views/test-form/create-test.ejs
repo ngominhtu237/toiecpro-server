@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Test</title>
+  </head>
+  <body>
+    <h1>Create Test</h1>
+    <form action="create-test" method="post">
+        Test name <input type="text" name="test_name"><br>
+        <br>Test description <textarea name="test_description" rows="10" cols="30"></textarea>
+        <br><br><input type="checkbox" name="isMainTest"> Main Test <i>(đề thi mở trong 1 thời gian nhất định nhằm xếp hạng level)</i>
+        <br><br><input type="checkbox" name="isLocked"> Is Locked <i>(khóa đề mà mở ra để xếp hạng level)
+        <br><br></i>
+        Category
+        <select name="testtype_id">
+          <% for(var i=0; i < data.length; i++) { %>
+            <option value="<%= data[i].id %>"><%= data[i].type_name %></option>
+          <% } %>
+        </select>
+        <i>(Phân loại đề ví dụ FullTest, đề chỉ gồm phần đọc, phần nghe, chỉ gồm Part1, Part2,...)</i>
+        <br><br>
+        <input type="submit" value="Save Test">
+      </form> 
+  </body>
+</html>
