@@ -1,1 +1,25 @@
-Create Part Two
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+</head>
+<body>
+<h1>Create Part Two</h1><br>
+<form action="create" method="post" enctype="multipart/form-data">
+Information <input type="text" name="information"> <i>(thông tin part nhập vào, ví dụ part này của test nào)</i> <br><br>
+Direction <br><br><textarea name="direction" rows="5" cols="50"></textarea><br><br>
+Audio <input name="audio" type="file"><br><br>
+========================== <br><br>
+<% for(let i=1; i<=30; i++) { %>
+<p>Câu <%= i %> :</p> 
+Question Name  <input type="text" name="question_name_<%= i %>"><br><br>
+Option A  <input type="text" name="optionA_<%= i %>"><br><br>
+Option B  <input type="text" name="optionB_<%= i %>"><br><br>
+Option C  <input type="text" name="optionC_<%= i %>"><br><br>
+Answer  <input type="text" name="answer_<%= i %>"><br><br>
+<% } %>
+<input type="submit" value="Save">
+</form>
+</body>
+</body>
+</html>

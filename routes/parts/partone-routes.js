@@ -3,10 +3,8 @@ var router = express.Router();
 const multer = require('multer');
 const unirest = require('unirest');
 const appRoot = require('app-root-path');
-
 const mPathOne = appRoot.resolve('/public/resource/photo/test1/partone');
 
-// const allowTypes = ['image/png', 'image/jpeg', 'image/gif'];
 const storage = multer.diskStorage({
     destination(req, file, cb) {
         cb(null, mPathOne);
@@ -32,14 +30,14 @@ const uploader = multer({
     // limits: uploadConfig
 })
 
-router.get('/create-part1', (req, res, next) => {
+router.get('/create', (req, res, next) => {
     res.render('parts-form/create-part-1-form', {
-        title: 'Express'
+        title: 'Create Part One'
     });
 });
 
 
-router.post('/create-part1', uploader.fields([
+router.post('/create', uploader.fields([
         {
             name: 'picture_example'
         },
@@ -95,7 +93,7 @@ router.post('/create-part1', uploader.fields([
             arrAnswer[i] = req.body['answer_' + i];
         }
 
-        unirest.post('http://localhost:8000/parts/create-partone')
+        unirest.post('http://localhost:8000/parts/test')
             .headers({
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -124,39 +122,4 @@ router.post('/create-part1', uploader.fields([
         });
     });
 
-router.get('/create-part2', (req, res, next) => {
-    res.render('parts-form/create-part-2-form', {
-        title: 'Express'
-    });
-});
-
-router.get('/create-part3', (req, res, next) => {
-    res.render('parts-form/create-part-3-form', {
-        title: 'Express'
-    });
-});
-
-router.get('/create-part4', (req, res, next) => {
-    res.render('parts-form/create-part-4-form', {
-        title: 'Express'
-    });
-});
-
-router.get('/create-part5', (req, res, next) => {
-    res.render('parts-form/create-part-5-form', {
-        title: 'Express'
-    });
-});
-
-router.get('/create-part6', (req, res, next) => {
-    res.render('parts-form/create-part-6-form', {
-        title: 'Express'
-    });
-});
-
-router.get('/create-part7', (req, res, next) => {
-    res.render('part-form/create-part-7-form', {
-        title: 'Express'
-    });
-});
 module.exports = router;
